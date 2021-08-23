@@ -70,7 +70,6 @@
         title="Select Windows Console." 
         width="50%" 
         height="50%" />
-
 <br>
 
 ## Install [GitHub Desktop](https://desktop.github.com/) (Mac). 
@@ -201,15 +200,15 @@ What is the difference between Git and GitHub?
 
 What is the difference between a git commit and a git push?
 
- - Answer: Git commit saves changes made on file while git push 
+ - Answer: Git commit saves changes made on file while git push pushes to your remote repository will upload all pending commits.
 
 What is the difference between a pull, and an upstream pull?
 
- - Answer:
+ - Answer: Pull is when you pull a repository, you are updating your local copy with any changes that have been made on the remote version.
 
 What part of these instructions was unclear or incomplete?
 
- - Answer:
+ - Answer: The part of pull and upstream pull is not in this document and I don't undestand it so much. 
 
 Type down any class notes below this sentence:
 
