@@ -131,23 +131,23 @@ Typing `python` *(or `python3`)* into the terminal will enter the Python console
 What is a benefit of using Markdown?
 https://www.markdownguide.org/getting-started/
 
- - Answer:
+ - Answer: Markdown is a lightweight markup language that you can use to add formatting elements to plaintext text documents. Markdown can be used for everything. People use it to create websites, documents, notes, books, presentations, email messages, and technical documentation.
 
 What does "cd" stand for?
 
- - Answer:
+ - Answer: Change Directory
 
 Did you get stuck at any point or become confused with your console? (yes/no) If so, what happened? How did you solve it?
 
- - Answer:
+ - Answer: I got stuck with the python program. It wasn't joined with the path. I solved it by installing it again and using the HelloWorld.py
 
 Did you consider searching google for other commands to run? What did you try? 
 
- - Answer:
+ - Answer: No because I just tried what solved the problem.
 
 What would you like to program? 
 
- - Answer:
+ - Answer: Software and websites
 
 Type down any class notes below this sentence:
 
