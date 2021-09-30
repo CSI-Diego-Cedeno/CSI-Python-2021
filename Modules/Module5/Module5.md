@@ -71,9 +71,9 @@ print(f"Computer selected: {computerChoice}")
 Give a python example for each logic operator in the module image.
 
  - Answers:
-   - OR:
-   - AND: 
-   - NOT: 
+   - OR:Any data point present, inclusive. True if either of the operands is true.
+   - AND: All data points are present, exclusive. True if both operands are true
+   - NOT: One data point is present but not other. True if operands is false.
 
 
 Type down any class notes below this sentence:
