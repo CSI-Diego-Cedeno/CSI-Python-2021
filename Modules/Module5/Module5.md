@@ -72,8 +72,19 @@ Give a python example for each logic operator in the module image.
 
  - Answers:
    - OR:Any data point present, inclusive. True if either of the operands is true.
+  if(x<= 60 or(x<1))  
+  the first one is true and the other one is false but if one of those is true the answer is true.
+
+
    - AND: All data points are present, exclusive. True if both operands are true
+  if(x<= 60 and(x<1))
+   The first one is true and the second one is false but if one of those is false the answer is false. 
+
+
    - NOT: One data point is present but not other. True if operands is false.
+  if(x<= 60 and(notx<1))
+ The first one is true and the second one is also true but the answer is false because because if both are true the answer is the opposite which is false.
+
 
 
 Type down any class notes below this sentence:
