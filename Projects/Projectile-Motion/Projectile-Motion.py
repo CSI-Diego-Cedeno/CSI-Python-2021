@@ -1,7 +1,7 @@
-import math
+import os
+
 from ExperimentData import ExperimentData
 
-import os
 from pathlib import Path
 
 import json
@@ -12,20 +12,9 @@ import json
 # RoundVelocity_ms = 910 
 # Building = "Central Park Tower"
 # BuildingHeight_m = 472
-# Gravity_ms= 9.81
+# Gravity_ms= 9.8
 
-# Here in calculating the time by plugging in the formula with the variables defined on top. But first, you need to import the fuction of the square root. 
-def ProjectileFunction(experimentData:ExperimentData):
-    time_s = math.sqrt((2 * experimentData.BuildingHeight_m) / experimentData.Gravity_ms)
-    Distance_m = (experimentData.RoundVelocity_ms * time_s)
-    print(f"""Chris is planning on killing an old lady on Central park.
-    He will use an {experimentData.Gunname} which uses a cartridge of {experimentData.Guncartridge}. 
-    The round of this weapon is {experimentData.Round}and the velocity of the round is {experimentData.RoundVelocity_ms}m/s.
-    He will shoot the gun from {experimentData.Building}, this building has a height of {experimentData.BuildingHeight_m}m.
-    The gravity on earth is {experimentData.Gravity_ms}m/s, the time it will take the gun to kill the lady is {time_s},
-    and the distance it will run is {Distance_m}. Chris just killed the old lady.
-    """)
-
+    
 # experimentalData = {
 #  "Gunname" : "Knight's Armament Company SR-25",
 #  "Guncartridge" : "7.62x51mm NATO",
@@ -33,21 +22,39 @@ def ProjectileFunction(experimentData:ExperimentData):
 #  "RoundVelocity_ms" : 910,
 #  "Building" : "Central Park Tower",
 #  "BuildingHeight_m" : 472,
-#  "Gravity_ms": 9.81
+#  "Gravity_ms": 9.8
 # }
 
 myDataSet = [
-     ExperimentData("Knight's Armament Company SR-25",)
-
-
-
+     ExperimentData("Knight's Armament Company SR-25", "7.62x51mm NATO", "7.62x51mm M993", 910, "Central Park Tower", 472, "Earth"),
+     ExperimentData("Knight's Armament Company SR-25", "7.62x51mm NATO", "7.62x51mm M61", 849, "One World Trade Center", 472, "Mercury"),
+     ExperimentData("Knight's Armament Company SR-25", "7.62x51mm NATO", "7.62x51mm FMJ", 840, "Central Park Tower", 472, "Venus"),
+     ExperimentData("Knight's Armament Company SR-25", "7.62x51mm NATO", "7.62x51mm M80", 833, "One World Trade Center", 472, "Mars"),
+     ExperimentData("Knight's Armament Company SR-25", "7.62x51mm NATO", "7.62x51mm Ultra Nosler", 822, "Central Park Tower", 472, "Saturn"),
+     ExperimentData("Knight's Armament Company SR-25", "7.62x51mm NATO", "7.62x51mm M993", 910, "Central Park Tower", 472, "Uranus"),
+     ExperimentData("Knight's Armament Company SR-25", "7.62x51mm NATO", "7.62x51mm M61", 849, "One World Trade Center", 472, "Neptune"),
 ]
 
+# This code creates the JSON file 
 MyOutputPath = Path(__file__).parents[0]
-MyOutputFilePath = os.path.join(myOutputPath , 'ExperimentData.json')
+MyOutputFilePath = os.path.join(MyOutputPath , 'ExperimentData.json')
 
-with open(myOutputFilePath, 'w') as outfile:
-    json.dump(experimentData.__dict__ , outfile)
+# This code calls the dictionary and sends the ExperimentData to the JSON file
+with open(MyOutputFilePath, 'w') as outfile:
+    json.dump([data.__dict__ for data in myDataSet], outfile)
+
+
+# Deserialization
+# Opening the JSON file
+deserialize = open(MyOutputFilePath,)
+
+# Deserializing the data
+experimentJson = json.load(deserialize)
+
+# Reads the file and converts it back to the python
+for e in experimentJson:
+    (ExperimentData(**e).toString())
+
 
 
 
