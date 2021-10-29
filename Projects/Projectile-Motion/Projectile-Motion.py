@@ -53,7 +53,7 @@ experimentJson = json.load(deserialize)
 
 # Reads the file and converts it back to the python
 for e in experimentJson:
-    (ExperimentData(**e).toString())
+    ExperimentData(**e).run()
 
 
 

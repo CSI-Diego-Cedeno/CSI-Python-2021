@@ -11,18 +11,18 @@ class ExperimentData:
       self.planet = planet
 
 
-      def getTime(self):
+    def getTime(self):
         return (math.sqrt(2 * self.Buildingheight / self.getGravity))
 
-      def getDistance(self):
+    def getDistance(self):
         return(self.Roundvelocity * self.getTime())
 
-      def getGravity(self):
+    def getGravity(self):
         planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
         g_ms2 = [3.7, 8.87, 9.81, 3.711, 24.79, 10.44, 8.69, 11.15]
         return g_ms2[planets.index(self.planet)]
 
-      def toString(self):
+    def run(self):
         print(f"""Chris is planning on killing an old lady on Central park.
     He will use an {self.Gunname} which uses a cartridge of {self.Guncartridge}. 
     The round of this weapon is {self.Round}and the velocity of the round is {self.RoundVelocity_ms}m/s.
