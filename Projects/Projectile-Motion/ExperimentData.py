@@ -23,13 +23,13 @@ class ExperimentData:
         return g_ms2[planets.index(self.planet)]
 
     def run(self):
-        print(f"""Chris is planning on killing an old lady on Central park.
+        print(f"""Chris is planning on hitting a bottle used as a target for practicing whic is located on Central park.
     He will use an {self.Gunname} which uses a cartridge of {self.Guncartridge}. 
     The round of this weapon is {self.Round}and the velocity of the round is {self.RoundVelocity_ms}m/s.
     He will shoot the gun from {self.Building}, this building has a height of {self.BuildingHeight_m}m.
     The planet in which he is going to shoot is {self.planet}, the gravity is {self.getGravity}.
-    The time it will take the gun to kill the lady is {self.getTime}
-    and the distance it will run is {self.getDistance}. Chris just killed the old lady.
+    The time it will take the gun to hit the bottle is {self.getTime}
+    and the distance it will run is {self.getDistance}. Chris just hit the bottle.
     """)
 
 
