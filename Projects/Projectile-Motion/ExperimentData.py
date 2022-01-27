@@ -12,10 +12,10 @@ class ExperimentData:
 
 
     def getTime(self):
-        return (math.sqrt(2 * self.Buildingheight / self.getGravity))
+        return (math.sqrt(2 * self.BuildingHeight_m / self.getGravity))
 
     def getDistance(self):
-        return(self.Roundvelocity * self.getTime())
+        return(self.RoundVelocity_ms * self.getTime())
 
     def getGravity(self):
         planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
