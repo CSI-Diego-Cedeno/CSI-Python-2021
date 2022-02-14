@@ -16,7 +16,6 @@ newDesert:Dessert = Dessert(**requestData)
 
 print(newDesert.variety)
 
-
 Steps = ["""
 |---------|
 |         |
@@ -79,8 +78,23 @@ Steps = ["""
 """
 ]
 
+
 print(Steps[0])
 
 print(newDesert.variety)
 
 print(len(newDesert.variety)*" _ ")
+
+def get_input():
+    while(True):
+      # ask for input
+      Letter = input(f"name a letter for this dessert: ")
+
+      # Validate input
+      if(len(Letter) != 1):
+          print("error")
+          continue
+      return Letter
+  
+
+print(get_input)()
