@@ -88,13 +88,17 @@ print(len(newDesert.variety)*" _ ")
 def get_input():
     while(True):
       # ask for input
-      Letter = input(f"name a letter for this dessert: ")
+      Character = input(f"name a letter for this dessert: ")
 
       # Validate input
-      if(len(Letter) != 1):
-          print("error")
+      if(len(Character) != 1):
+          print("error, just put a letter: ")
           continue
-      return Letter
-  
+      return Character
+      if(Character.isnumeric()):
+          print("error, no numbers, just a letter: ")
+          continue
+      return Character
+
 
 print(get_input)()
