@@ -15,7 +15,7 @@ requestData = json.loads(urllib.request.urlopen(req).read())
 # Deserialize  
 newDesert:Dessert = Dessert(**requestData)
 
-print(newDesert.variety)
+print(newDessert.variety)
 
 Steps = ["""
 |---------|
@@ -92,7 +92,10 @@ Steps = ["""
 
 print(Steps[0])
 
-print(len(newDesert.variety)*" _ ")
+print(newDessert.variety)
+
+print(len(newDessert.variety)*" _ ")
+
 def getInput():
     while(True):
       # ask for input
@@ -115,10 +118,19 @@ def getInput():
       return Character
 
 
-def printword()
-   temp: str = ""
-
-   for(Character in word)
-
-
 print(getInput())
+
+
+def print_word():
+    Tempt:str = " "
+
+    for Character in print_word:
+
+        for (matches) or in():
+            {Tempt=="_" or Character
+            
+            
+        return or print
+        Tempt}
+
+print(print_word())
