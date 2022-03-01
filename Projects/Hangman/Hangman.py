@@ -1,6 +1,4 @@
 import json, ssl
-import os
-from pathlib import Path
 import urllib.request
 from Dessert import Dessert
 
@@ -34,7 +32,7 @@ Steps = ["""
 """
 |---------|
 |         |
-|         O
+|        😂
 |         
 |
 |
@@ -44,7 +42,7 @@ Steps = ["""
 """
 |--------|
 |        |
-|        O
+|       😂
 |        |
 |       
 |
@@ -54,9 +52,9 @@ Steps = ["""
 """
 |--------|
 |        |
-|        O
-|        |
-|       -|
+|       😂
+|      --|
+|        
 |        
 |
 |
@@ -64,9 +62,9 @@ Steps = ["""
 """
 |--------|
 |        |
-|        O
+|       😂
+|      --|--
 |        |
-|       -|-
 |       
 |
 |
@@ -74,9 +72,9 @@ Steps = ["""
 """
 |--------|
 |        |
-|        O
+|       😂
+|      --|--
 |        |
-|       -|-
 |       / 
 |
 |
@@ -84,10 +82,10 @@ Steps = ["""
 """
 |--------|
 |        |
-|        O
+|       😂
+|      --|--
 |        |
-|       -|-
-|       / \
+|       / \\
 |
 |
 """
@@ -117,7 +115,7 @@ def getInput():
          continue
 
      if(Character in special_char):
-        print("Error, no special charcter, just type a letter: ")
+        print("Error, no special character, just type a letter: ")
         continue
     
     # This is for used character that were typed
@@ -126,20 +124,22 @@ def getInput():
 
 # This function is used so that it stores every correct Character that you type
 def print_word():
-    Tempt:str = " "
+    Temp:str = " "
     for Character in newDessert.variety:
         if Character in attemptedCharacter:
             Temp +="_"
         else:
             Temp += Character
-        return Temp
+    print(Temp)
 
 # This is used to store the erros you do when putting the Character, the function adds 1 to each one you get wrong
 def Print_stepsErrors():
     error = 0
     for Character in attemptedCharacter:
         if(Character not in attemptedCharacter):
-            error += 1
+            error = error + 1
+    print(Steps[error])
+
 
 # The following part is the while True which will keep the game going and the game restarts
 while True:
