@@ -5,15 +5,18 @@ from Dessert import Dessert
 # This is used to prevent errors
 ssl._create_default_https_context = ssl._create_unverified_context
 
-# This URL is used to request a word from the class Dessert
-DessertURL = "https://random-data-api.com/api/dessert/random_dessert"
-
-# Here creates a variable to ask for data
-req = urllib.request.Request(DessertURL)
-requestData = json.loads(urllib.request.urlopen(req).read())
-
-# Deserialize into a class
-newDessert:Dessert = Dessert(**requestData)
+def getWord():
+    
+    # This URL is used to request a word from the class Dessert
+    DessertURL = "https://random-data-api.com/api/dessert/random_dessert"
+    
+    # Here creates a variable to ask for data
+    req = urllib.request.Request(DessertURL)
+    requestData = json.loads(urllib.request.urlopen(req).read())
+    
+    # Deserialize into a class
+    newDessert:Dessert = Dessert(**requestData)
+    return newDessert
 
 # This is the variable created for all the incorrect characters
 attemptedCharacter = []
@@ -91,16 +94,16 @@ Steps = ["""
 """
 ]
 
-# This print starts the game
-print(Steps[0])
+# # This print starts the game
+# print(Steps[0])
 
-# In this part it prints the word that it got from the data and puts each character an _
-print(len(newDessert.variety)*" _ ")
+# # In this part it prints the word that it got from the data and puts each character an _
+# print(len(newDessert.variety)*" _ ")
 
 # The function its used so that the game tells you the characters that are errors in the game
 def getInput():
     while(True):
-
+        
       # ask for input
      Character = input(f"name a letter for this dessert: ")
      special_char = "[@_!#$%^&*()<>?/\|}{~:]"
@@ -133,7 +136,7 @@ def print_word():
     print(Temp)
 
 # This is used to store the erros you do when putting the Character, the function adds 1 to each one you get wrong
-def Print_stepsErrors():
+def Print_stepsErrors(Character,attemptedCharacter):
     error = 0
     for Character in attemptedCharacter:
         if(Character not in attemptedCharacter):
@@ -142,9 +145,17 @@ def Print_stepsErrors():
 
 
 # The following part is the while True which will keep the game going and the game restarts
-while True:
-    getInput()
-    print_word()
-    Print_stepsErrors()
+while True: 
+    newDessert = getWord()
+    attemptedCharacter = []
     
+    while True:
+        
+        print_word()
+        
+        char = getInput()
+        Print_stepsErrors(char,attemptedCharacter)
+        # if()  :
+            # break   
+
 
