@@ -155,6 +155,8 @@ while True:
         
         char = getInput()
         Print_stepsErrors(char,attemptedCharacter)
+
+        
         # if()  :
             # break   
 
