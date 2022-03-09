@@ -1,4 +1,5 @@
 import json, ssl
+from tkinter import Y
 import urllib.request
 from Dessert import Dessert
 
@@ -16,7 +17,7 @@ def getWord():
     
     # Deserialize into a class
     newDessert:Dessert = Dessert(**requestData)
-    return newDessert
+    return newDessert.variety.upper()
 
 # This is the variable created for all the incorrect characters
 attemptedCharacter = []
@@ -95,7 +96,7 @@ Steps = ["""
 ]
 
 # # This print starts the game
-# print(Steps[0])
+#print(Steps[0])
 
 # # In this part it prints the word that it got from the data and puts each character an _
 # print(len(newDessert.variety)*" _ ")
@@ -104,45 +105,49 @@ Steps = ["""
 def getInput():
     while(True):
         
-      # ask for input
-     Character = input(f"name a letter for this dessert: ")
-     special_char = "[@_!#$%^&*()<>?/\|}{~:]"
+        # ask for input
+        Character = input(f"name a letter for this dessert: ").upper()
+        special_char = "[@_!#$%^&*()<>?/\|}{~:]"
 
-      # Validate input
-     if(len(Character) != 1):
-          print("error, just type a letter: ")
-          continue
+        # Validate input
+        if(len(Character) != 1):
+            print("error, just type a letter: ")
+            continue
 
-     if(Character.isnumeric()):
-         print("error, no numbers, just type a letter: ")
-         continue
+        if(Character.isnumeric()):
+            print("error, no numbers, just type a letter: ")
+            continue
 
-     if(Character in special_char):
-        print("Error, no special character, just type a letter: ")
-        continue
+        if(Character in special_char):
+            print("Error, no special character, just type a letter: ")
+            continue
+
+        if(Character in attemptedCharacter):
+            print("Error, you already used this letter ")
+            continue
     
-    # This is for used character that were typed
-     attemptedCharacter.append(Character)
-     return Character
+        # This is for used character that were typed
+        attemptedCharacter.append(Character)
+        return Character
 
 # This function is used so that it stores every correct Character that you type
-def print_word():
+def printWord():
     Temp:str = " "
-    for Character in newDessert.variety:
-        if Character in attemptedCharacter:
+    for Character in newDessert:
+        if Character not in attemptedCharacter:
             Temp +="_"
         else:
             Temp += Character
     print(Temp)
 
-# This is used to store the erros you do when putting the Character, the function adds 1 to each one you get wrong
-def Print_stepsErrors(Character,attemptedCharacter):
+# This is used to store the errors you do when putting the Character, the function adds 1 to each one you get wrong
+def stepsErrors():
     error = 0
     for Character in attemptedCharacter:
-        if(Character not in attemptedCharacter):
+        if(Character not in newDessert):
             error = error + 1
-    print(Steps[error])
-
+    # print(Steps[error])
+    return error
 
 # The following part is the while True which will keep the game going and the game restarts
 while True: 
@@ -150,14 +155,15 @@ while True:
     attemptedCharacter = []
     
     while True:
-        
-        print_word()
-        
-        char = getInput()
-        Print_stepsErrors(char,attemptedCharacter)
+        error = stepsErrors()
+        if(error == 7):
+            print(f"Game Over, you are a loser, the word that you didn't guessed was {newDessert}")
+            break
+        if():
+            break
+        print(Steps[error])
+        printWord()
+        getInput()
 
         
-        # if()  :
-            # break   
-
 
