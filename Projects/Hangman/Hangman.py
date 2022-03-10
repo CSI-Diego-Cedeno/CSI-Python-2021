@@ -105,7 +105,7 @@ Steps = ["""
 def getInput():
     while(True):
         
-        # ask for input
+        # ask for input and upper means that all the letters that are used are put on capital letter
         Character = input(f"name a letter for this dessert: ").upper()
         special_char = "[@_!#$%^&*()<>?/\|}{~:]"
 
@@ -113,15 +113,15 @@ def getInput():
         if(len(Character) != 1):
             print("error, just type a letter: ")
             continue
-
+        # Here the game recognizes that you used a number and tells you to use a letter
         if(Character.isnumeric()):
             print("error, no numbers, just type a letter: ")
             continue
-
+        # The game recognizes that you used a sepcial character and tells you to use a letter
         if(Character in special_char):
             print("Error, no special character, just type a letter: ")
             continue
-
+        # Here the game checks which letters have you typed and tells you that you already used them
         if(Character in attemptedCharacter):
             print("Error, you already used this letter ")
             continue
@@ -134,19 +134,22 @@ def getInput():
 def printWord():
     Temp:str = " "
     for Character in newDessert:
+        # the logic here is that if the letter that you typed here is not correct the lines stay the same
         if Character not in attemptedCharacter:
             Temp +="_"
+        # Here if the letter that you typed is correct the line is replaced with the letter that goes in that line
         else:
-            Temp += Character
+            Temp += Character     
     print(Temp)
+    
 
 # This is used to store the errors you do when putting the Character, the function adds 1 to each one you get wrong
 def stepsErrors():
     error = 0
     for Character in attemptedCharacter:
+        # Here it adds the step to each letter you put that is not in the word
         if(Character not in newDessert):
             error = error + 1
-    # print(Steps[error])
     return error
 
 # The following part is the while True which will keep the game going and the game restarts
@@ -156,11 +159,13 @@ while True:
     
     while True:
         error = stepsErrors()
+        # Here after the game reaches the 7 steps the game gives the message to the user that the game is over and then starts the new game
         if(error == 7):
             print(f"Game Over, you are a loser, the word that you didn't guessed was {newDessert}")
+            print("---------------------")
+            print("New Game")
             break
-        if():
-            break
+        # Here it prints the steps againg for the new game
         print(Steps[error])
         printWord()
         getInput()
