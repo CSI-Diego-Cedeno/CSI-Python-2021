@@ -6,7 +6,8 @@ pygame.display.set_caption('Snake game by Edureka') #Will see this message on th
 game_over=False 
 while not game_over:
     for event in pygame.event.get(): #Returns all the actions 
-        print(event)   #prints out all the actions that take place on the screen
+        if event.type==pygame.QUIT: #Here QUIT closes or exits the game
+            game_over=True
  
 pygame.quit() 
 quit() #This uninitialize everything
