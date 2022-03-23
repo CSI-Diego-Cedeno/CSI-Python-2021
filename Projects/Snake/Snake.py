@@ -5,7 +5,7 @@ import random
 #This initializes all the imported pygame modules
 pygame.init() 
 
-#Here are th colors used
+#Here are the colors used
 white = (255, 255, 255)
 yellow = (255, 255, 102)
 black = (0, 0, 0)
@@ -19,6 +19,7 @@ dis_height = 400
 
 # Sets the dimensions for the game 
 dis=pygame.display.set_mode((dis_width, dis_width)) 
+
 #Will see this message on the display screen
 pygame.display.set_caption('Snake game by Edureka') 
 
@@ -31,6 +32,12 @@ snake_speed = 15
 #font style for message
 font_style = pygame.font.SysFont("bahnschrift", 25)
 score_font = pygame.font.SysFont("comicsansms", 35)
+
+#Function created for the score of the game
+def Your_score(score):
+    value = score_font.render("Your Score: " + str(score), True, yellow) #Color of the score
+    dis.blit(value, [0, 0])
+ 
 
 #It creates the snakes's block and list
 def our_snake(snake_block, snake_list):
@@ -66,11 +73,14 @@ def gameLoop():
 
     #creates and starts the loop
     while not game_over:
+
         #A while for the game closing
         while game_close == True:
             dis.fill(blue) 
+
             #Here it gives you the message that you lost and it updates it on the display in red
             message("You Lost! Press Q-Quit or C-Play Again", red)
+            Your_score(Length_of_snake - 1)
             pygame.display.update()
 
             #Here it checks for the event that is occuring on pygame
@@ -105,6 +115,7 @@ def gameLoop():
                 elif  event.key == pygame.K_DOWN: 
                     y1_change = snake_block
                     x1_change = 0
+
         #defines limits for x and y coordinates of the snake, less or equal to the screen
         if x1 >= dis_width or x1 < 0 or y1 >= dis_height or y1 < 0:
             game_over = True
@@ -118,12 +129,14 @@ def gameLoop():
 
         #This function draws the food as a rectangle with color and size
         pygame.draw.rect(dis, blue, [foodx, foody, snake_block, snake_block]) 
+
         #Snakes's head
         snake_Head = []
         #Here are the snake's head x and y coordinate
         snake_Head.append(x1)
         snake_Head.append(y1)
         snake_List.append(snake_Head)
+
         #if the lenth of the snake list is bigger than the snake it deletes the list
         if len(snake_List) > Length_of_snake:
             del snake_List[0]
@@ -133,12 +146,14 @@ def gameLoop():
             if x == snake_Head:
                  game_close = True
         
-        #It upsdates the snakes location of the blocks
+        #It updates the snakes location of the blocks and your score
         our_snake(snake_block, snake_List)
+        Your_score(Length_of_snake - 1)
 
 
         #This function draws the snake as a rectangle with color and size
         #pygame.draw.rect(dis, black, [x1, y1, snake_block, snake_block]) 
+
         #Here it updates the screen
         pygame.display.update() 
         
@@ -147,6 +162,7 @@ def gameLoop():
             foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
             foody = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
             Length_of_snake += 1   
+
         #Here the clock keeps the snake speed 
         clock.tick(snake_speed)
 
